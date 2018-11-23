@@ -7,10 +7,12 @@ int main(void)
 	char str[100];
 	
 	gets(str);
+	
 	for (int i = 'a'; i <= 'z'; i++)
 	{
-		printf("%d ", checkspell(str, i));
+		printf("%c : %d\n", i, checkspell(str, i));
 	}
+	
 	return 0;
 }
 
