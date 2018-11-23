@@ -4,15 +4,15 @@ int main(void)
 {
 	int p, q, r, s;
 	
-	printf("Çà·Ä A\n");
+	printf("í–‰ë ¬ A\n");
 	
-	printf("Çà °³¼ö : ");
+	printf("í–‰ ê°œìˆ˜ : ");
 	scanf("%d", &p);
 	
-	printf("¿­ °³¼ö : ");
+	printf("ì—´ ê°œìˆ˜ : ");
 	scanf("%d", &q); 
 	
-	printf("Çà·ÄAÀÇ ¼ººĞ %d°³¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n", p*q); 
+	printf("í–‰ë ¬Aì˜ ì„±ë¶„ %dê°œë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n", p*q); 
 	
 	int i, j, k, a[100][100];
 	
@@ -24,22 +24,22 @@ int main(void)
 		}
 	}
 	
-	printf("\nÇà·Ä B\n");
+	printf("\ní–‰ë ¬ B\n");
 	
-	printf("Çà °³¼ö : ");
+	printf("í–‰ ê°œìˆ˜ : ");
 	scanf("%d", &r);
-	
-	printf("¿­ °³¼ö : ");
-	scanf("%d", &s);
 	
 	if(q != r)
 	{
-		printf("µÎ Çà·ÄÀÇ °öÀÌ Á¤ÀÇµÇÁö ¾Ê½À´Ï´Ù.\n");
+		printf("ë‘ í–‰ë ¬ì˜ ê³±ì´ ì •ì˜ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
 		
 		return 0;
 	}
 	
-	printf("Çà·ÄBÀÇ ¼ººĞ %d°³¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n", r*s); 
+	printf("ì—´ ê°œìˆ˜ : ");
+	scanf("%d", &s);
+	
+	printf("í–‰ë ¬Bì˜ ì„±ë¶„ %dê°œë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n", r*s); 
 	
 	int b[100][100];
 	
@@ -64,7 +64,7 @@ int main(void)
 		}
 	}
 	
-	printf("\nµÎ Çà·ÄÀÇ °ö AxB´Â\n");
+	printf("\në‘ í–‰ë ¬ì˜ ê³± AxBëŠ”\n");
 	
 	for(i=0; i<p; i++)
 	{
