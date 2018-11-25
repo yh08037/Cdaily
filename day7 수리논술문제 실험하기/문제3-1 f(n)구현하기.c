@@ -2,8 +2,9 @@
 
 int main(void)
 {
-	int a[35][35], i, j, n, cnt=1, result, Is_break=0;
+	int a[35][35], i, j, n, cnt, result, Is_break=0;
 	
+	cnt = 1;
 	for(i=0; i<35; i++){
 		for(j=0; j<35; j++){
 			a[i][j] = cnt;
