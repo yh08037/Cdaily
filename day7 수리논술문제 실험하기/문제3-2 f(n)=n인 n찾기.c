@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	int i, j, cnt=1, result, Is_break=0;
+	int i, j, cnt=1;
 	
 	int a[35][35], b[35][35];
 	
