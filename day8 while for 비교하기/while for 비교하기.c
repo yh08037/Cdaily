@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h
 #include <time.h>
   
 
 double mean(double *arr, int num){
 	int i;
-	double sum=0; //¿À¹öÇÃ·Î¿ì?¾È³ª°ÚÁö 
+	double sum=0; //ì˜¤ë²„í”Œë¡œìš°?ì•ˆë‚˜ê² ì§€ 
 	for(i=0; i<num; i++){
 		sum += arr[i];
 	}
@@ -75,9 +76,9 @@ int main(void)
 	}
 	 
 	 
-	printf("while Æò±Õ : %lf\n", mean(time_while, input));
+	printf("while í‰ê·  : %lf\n", mean(time_while, input));
 	
-	printf("for Æò±Õ : %lf\n", mean(time_for, input));
+	printf("for í‰ê·  : %lf\n", mean(time_for, input));
 	
 	
 	free(time_while);
