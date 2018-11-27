@@ -7,12 +7,12 @@ int main(void)
 {
 	int a, b, c;
 
-	printf("¼¼ ¹°Åë A, B, CÀÇ ¿ë·®À» ÀÔ·Â¹Þ½À´Ï´Ù.\n\n");
+	printf("ì„¸ ë¬¼í†µ A, B, Cì˜ ìš©ëŸ‰ì„ ìž…ë ¥ë°›ìŠµë‹ˆë‹¤.\n\n");
 
-	printf("AÀÇ ¿ë·®Àº Â¦¼öÀÌ¸ç, BÀÇ ¿ë·®Àº AÀÇ ¿ë·®ÀÇ ¹Ýº¸´Ù Å©°Å³ª °°À¸¸ç, \nCÀÇ ¿ë·®Àº AÀÇ ¿ë·®ÀÇ ¹Ýº¸´Ù ÀÛ°Å³ª °°½À´Ï´Ù.\n\n");
+	printf("Aì˜ ìš©ëŸ‰ì€ ì§ìˆ˜ì´ë©°, Bì˜ ìš©ëŸ‰ì€ Aì˜ ìš©ëŸ‰ì˜ ë°˜ë³´ë‹¤ í¬ê±°ë‚˜ ê°™ìœ¼ë©°, \nCì˜ ìš©ëŸ‰ì€ Aì˜ ìš©ëŸ‰ì˜ ë°˜ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ìŠµë‹ˆë‹¤.\n\n");
 
 	while(1){
-		printf("AÀÇ ¿ë·® : ");
+		printf("Aì˜ ìš©ëŸ‰ : ");
 		scanf("%d", &a);
 		
 		if(a%2==0){
@@ -20,11 +20,11 @@ int main(void)
 			break;
 		}
 
-		printf("AÀÇ ¿ë·®Àº Â¦¼ö¿©¾ßÇÕ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.\n\n");
+		printf("Aì˜ ìš©ëŸ‰ì€ ì§ìˆ˜ì—¬ì•¼í•©ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”.\n\n");
 	}
 
 	while(1){
-		printf("BÀÇ ¿ë·® : ");
+		printf("Bì˜ ìš©ëŸ‰ : ");
 		scanf("%d", &b);
 
 		if(b>=a/2){
@@ -32,11 +32,11 @@ int main(void)
 			break;
 		}
 
-		printf("BÀÇ ¿ë·®Àº AÀÇ ¿ë·®ÀÇ ¹Ýº¸´Ù Å©°Å³ª °°¾Æ¾ßÇÕ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.\n\n");
+		printf("Bì˜ ìš©ëŸ‰ì€ Aì˜ ìš©ëŸ‰ì˜ ë°˜ë³´ë‹¤ í¬ê±°ë‚˜ ê°™ì•„ì•¼í•©ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”.\n\n");
 	}
 
 	while(1){
-		printf("CÀÇ ¿ë·® : ");
+		printf("Cì˜ ìš©ëŸ‰ : ");
 		scanf("%d", &c);
 
 		if(c<=a/2){
@@ -44,12 +44,12 @@ int main(void)
 			break;
 		}
 
-		printf("CÀÇ ¿ë·®Àº AÀÇ ¿ë·®ÀÇ ¹Ýº¸´Ù ÀÛ°Å³ª °°¾Æ¾ßÇÕ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.\n\n");
+		printf("Cì˜ ìš©ëŸ‰ì€ Aì˜ ìš©ëŸ‰ì˜ ë°˜ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ì•„ì•¼í•©ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”.\n\n");
 	}
 
 
 	if(a/2 % gcd(b, c)){
-		printf("°¡´ÉÇÑ ¹æ¹ýÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+		printf("ë‚˜ëˆ„ì–´ ë‹´ëŠ” ë°©ë²•ì´ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
 		return 0;
 	}
 
@@ -61,7 +61,7 @@ int main(void)
 		waterC = c;
 		cnt++;
 				
-		printf("%d´Ü°è : ¹°Åë AÀÇ ¹°À» ¹°Åë C¿¡, ¹°Åë C°¡ °¡µæ Âû ¶§±îÁö º×´Â´Ù. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
+		printf("%dë‹¨ê³„ : ë¬¼í†µ Aì˜ ë¬¼ì„ ë¬¼í†µ Cì—, ë¬¼í†µ Cê°€ ê°€ë“ ì°° ë•Œê¹Œì§€ ë¶“ëŠ”ë‹¤. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
 				
 		while(1){
 			if(waterB + waterC <= b){
@@ -69,7 +69,7 @@ int main(void)
 				waterC = 0;
 				cnt++;
 						
-				printf("%d´Ü°è : ¹°Åë CÀÇ ¹°À» ÀüºÎ ¹°Åë B¿¡ º×´Â´Ù. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
+				printf("%dë‹¨ê³„ : ë¬¼í†µ Cì˜ ë¬¼ì„ ì „ë¶€ ë¬¼í†µ Bì— ë¶“ëŠ”ë‹¤. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
 				break;
 			}
 			 
@@ -77,13 +77,13 @@ int main(void)
 			waterB = b;
 			cnt++;
 					
-			printf("%d´Ü°è : ¹°Åë CÀÇ ¹°À» ¹°Åë B¿¡, ¹°Åë B°¡ °¡µæ Âû ¶§±îÁö º×´Â´Ù. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
+			printf("%dë‹¨ê³„ : ë¬¼í†µ Cì˜ ë¬¼ì„ ë¬¼í†µ Bì—, ë¬¼í†µ Bê°€ ê°€ë“ ì°° ë•Œê¹Œì§€ ë¶“ëŠ”ë‹¤. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);
 			
 			waterA += waterB;
 			waterB = 0;
 			cnt++;
 			
-			printf("%d´Ü°è : ¹°Åë BÀÇ ¹°À» ÀüºÎ ¹°Åë A¿¡ º×´Â´Ù. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);		
+			printf("%dë‹¨ê³„ : ë¬¼í†µ Bì˜ ë¬¼ì„ ì „ë¶€ ë¬¼í†µ Aì— ë¶“ëŠ”ë‹¤. (%d, %d, %d)\n", cnt, waterA, waterB, waterC);		
 		}
 		
 		if(waterA==waterB){
