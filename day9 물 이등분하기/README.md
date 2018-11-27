@@ -16,4 +16,4 @@
 
 
 
-[원본 문제 출처-네이버 카페 라플라스 클럽](https://cafe.naver.com/laplaceclub/95195)
+[원본 수리논술 문제 출처-네이버 카페 라플라스 클럽](https://cafe.naver.com/laplaceclub/95195)
