@@ -14,16 +14,21 @@ int main(void){
 	POINT *locationA, *locationB;
 	double areaA, areaB;
 
+	printf("A의 꼭짓점의 개수 : ");
+	
 	scanf("%d", &numberA);
 
 	locationA = (POINT*)malloc(sizeof(POINT)*numberA);
 
 
 	for(i=0; i<numberA; i++){
+		printf("%d번째 점 : ", i+1); 
 		scanf("%d", &(locationA+i)->x);
 		scanf("%d", &(locationA+i)->y);
 	}
 
+	
+	printf("B의 꼭짓점의 개수 : ");
 
 	scanf("%d", &numberB);
 
@@ -31,6 +36,7 @@ int main(void){
 
 
 	for(i=0; i<numberB; i++){
+		printf("%d번째 점 : ", i+1); 
 		scanf("%d", &(locationB+i)->x);
 		scanf("%d", &(locationB+i)->y);
 	}	
