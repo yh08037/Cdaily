@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct{
@@ -39,7 +39,19 @@ int main(void){
 	areaA = Area_Polygon(numberA, locationA);
 	areaB = Area_Polygon(numberB, locationB);
 
-	printf("A�� ���� : %.1lf\nB�ǿ��� : %.1lf", areaA, areaB);
+	printf("A의 영역 : %.1lf\nB의영역 : %.1lf\n", areaA, areaB);
+	
+	
+	if(areaA>areaB){
+		printf("A의 영역의 넓이가 더 큽니다.\n");
+	}
+	else if(areaA<areaB){
+		printf("B의 영역의 넓이가 더 큽니다.\n");
+	}
+	else{
+		printf("A와 B의 영역의 넓이는 같습니다.\n");
+	}
+	
 
 	free(locationA);
 	free(locationB);
