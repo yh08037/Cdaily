@@ -28,7 +28,7 @@ int main(void){
 	}
 
 	
-	printf("B의 꼭짓점의 개수 : ");
+	printf("\nB의 꼭짓점의 개수 : ");
 
 	scanf("%d", &numberB);
 
@@ -45,7 +45,7 @@ int main(void){
 	areaA = Area_Polygon(numberA, locationA);
 	areaB = Area_Polygon(numberB, locationB);
 
-	printf("A의 영역 : %.1lf\nB의영역 : %.1lf\n", areaA, areaB);
+	printf("\nA의 영역 : %.1lf\nB의 영역 : %.1lf\n\n", areaA, areaB);
 	
 	
 	if(areaA>areaB){
