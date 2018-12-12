@@ -5,6 +5,11 @@ int main(void){
 	
 	scanf("%d %d", &n1, &n2);
 	
+	if(n1%2==0){
+		printf("잘못된 입력입니다.\n");
+		return 0;
+	}
+	
 	for(i=0; i<=n1/2; i++){
 		for(k=0; k<n2; k++){	
 			for(j=0; j<i; j++){
