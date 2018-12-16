@@ -2,33 +2,42 @@
 #include <stdbool.h>
 
 typedef struct{
-	bool subject_distribution;	//주연:true 
-	bool predicate_distribution;	//부주연:false 
-}Categorical_Proposition;
+	bool subjectDistribution;		//주연:true 
+	bool predicateDistribution;	//부주연:false 
+}CategoricalProposition;
 
 typedef struct{
-	Categorical_Proposition major_premise;	//대전제 
-	Categorical_Proposition minor_premise;	//소전제 
-	Categorical_Proposition conclusion;	//결론
-	int figure;				//격식 
+	CategoricalProposition major_premise;	//대전제 
+	CategoricalProposition minor_premise;	//소전제 
+	CategoricalProposition conclusion;		//결론
+	int figure;								//격식 
 }syllogism;
 
 
-Categorical_Proposition A = {true, false};	//전칭긍정명제 
-Categorical_Proposition E = {true, true};	//전칭부정명제 
-Categorical_Proposition I = {false, false};	//특칭긍정명제 
-Categorical_Proposition O = {false, true};	//특칭부정명제 
+CategoricalProposition A = {true, false};	//전칭긍정명제 
+CategoricalProposition E = {true, true};	//전칭부정명제 
+CategoricalProposition I = {false, false};	//특칭긍정명제 
+CategoricalProposition O = {false, true};	//특칭부정명제 
 
 
+void SetProposition(char);
 
 
 int main(void){ 
 	int i;
+	syllogism input;
 	
 	printf("논증 식 : ");
-
-	
 	
 	
 	return 0;
+}
+
+
+void SetProposition(char chr){
+	if(chr=='A')
+	else if(chr=='E')
+	else if(chr=='I')
+	else if(chr=='O')
+	else
 }
