@@ -3,14 +3,14 @@
 
 typedef struct{
 	bool subjectDistribution;		//주연:true 
-	bool predicateDistribution;	//부주연:false 
+	bool predicateDistribution;		//부주연:false 
 }CategoricalProposition;
 
 typedef struct{
 	CategoricalProposition major_premise;	//대전제 
 	CategoricalProposition minor_premise;	//소전제 
-	CategoricalProposition conclusion;		//결론
-	int figure;								//격식 
+	CategoricalProposition conclusion;	//결론
+	int figure;				//격식 
 }syllogism;
 
 
