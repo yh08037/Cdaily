@@ -25,9 +25,11 @@ void SetProposition(char);
 
 int main(void){ 
 	int i;
+	char temp[6];
 	syllogism input;
 	
 	printf("논증 식 : ");
+	gets(temp);
 	
 	
 	return 0;
