@@ -11,7 +11,7 @@ typedef struct{
 	CategoricalProposition minorPremise;	//소전제 
 	CategoricalProposition conclusion;	//결론
 	int figure;				//격식 
-}syllogism;
+}Syllogism;
 
 
 CategoricalProposition A = {true, false};	//전칭긍정명제 
@@ -24,7 +24,7 @@ CategoricalProposition SetProposition(char);
 
 int main(void){ 
 	int i;
-	syllogism input;
+	Syllogism input;
 	char temp;
 	
 	printf("논증 식 : ");
