@@ -2,8 +2,8 @@
 #include <stdbool.h>
 
 typedef struct{
-	bool subjectDistribution;		//주연:true, 부주연:false  
-	bool predicateDistribution;		//주연:true, 부주연:false 
+	bool subjectDistribution;		//주어 주연:true, 부주연:false  
+	bool predicateDistribution;		//술어 주연:true, 부주연:false 
 }CategoricalProposition;
 
 typedef struct{
