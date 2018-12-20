@@ -2,13 +2,13 @@
 #include <stdbool.h>
 
 typedef struct{
-	bool subjectDistribution;		//주연:true 
-	bool predicateDistribution;		//부주연:false 
+	bool subjectDistribution;		//주연:true, 부주연:false  
+	bool predicateDistribution;		//주연:true, 부주연:false 
 }CategoricalProposition;
 
 typedef struct{
-	CategoricalProposition major_premise;	//대전제 
-	CategoricalProposition minor_premise;	//소전제 
+	CategoricalProposition majorPremise;	//대전제 
+	CategoricalProposition minorPremise;	//소전제 
 	CategoricalProposition conclusion;	//결론
 	int figure;				//격식 
 }syllogism;
@@ -20,26 +20,29 @@ CategoricalProposition I = {false, false};	//특칭긍정명제
 CategoricalProposition O = {false, true};	//특칭부정명제 
 
 
-void SetProposition(char);
-
+CategoricalProposition SetProposition(char);
 
 int main(void){ 
 	int i;
-	char temp[6];
 	syllogism input;
+	char temp;
 	
 	printf("논증 식 : ");
-	gets(temp);
+	input.majorPremise = SetProposition(getchar());
+	input.minorPremise = SetProposition(getchar());
+	input.conclusion = SetProposition(getchar());
+	getchar();
+	scanf("%d", &input.figure);
+	
 	
 	
 	return 0;
 }
 
 
-void SetProposition(char chr){
-	if(chr=='A')
-	else if(chr=='E')
-	else if(chr=='I')
-	else if(chr=='O')
-	else
+CategoricalProposition SetProposition(char chr){
+	if(chr=='A') return A;
+	else if(chr=='E') return E;
+	else if(chr=='I') return I;
+	else if(chr=='O') return O;
 }
