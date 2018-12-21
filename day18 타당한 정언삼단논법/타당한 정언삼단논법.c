@@ -36,9 +36,6 @@ int main(void){
 	printf("논증 식 : ");
 	
 	GetSyllogism(&input);
-	 
-	printf("%d", ExclusivePremises(&input));
-	
 	
 	return 0;
 }
