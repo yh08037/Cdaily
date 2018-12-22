@@ -14,20 +14,22 @@ typedef struct{
 }Syllogism;
 
 
-CategoricalProposition A = {true, false};	//전칭긍정명제 
-CategoricalProposition E = {true, true};	//전칭부정명제 
-CategoricalProposition I = {false, false};	//특칭긍정명제 
-CategoricalProposition O = {false, true};	//특칭부정명제 
+const CategoricalProposition A = {true, false};		//전칭긍정명제 
+const CategoricalProposition E = {true, true};		//전칭부정명제 
+const CategoricalProposition I = {false, false};	//특칭긍정명제 
+const CategoricalProposition O = {false, true};		//특칭부정명제 
 
 
 void GetSyllogism(Syllogism*);			//논증 식을 입력받아 저장합니다 
 CategoricalProposition SetProposition(char);	//알파벳을 정언명제로 대입합니다 
 bool UndistributedMiddle(Syllogism*);		//매개념 부주연의 오류 
 bool IllicitMajor(Syllogism*);			//대개념 부당주연의 오류 
-bool IllicitMinor(Syllogism*);			//소개념 부장주연의 오류 
+bool IllicitMinor(Syllogism*);			//소개념 부당주연의 오류 
 bool ExclusivePremises(Syllogism*);		//양부정전제의 오류 
 bool IllicitAffirmation(Syllogism*);		//부당긍정의 오류 
+bool IllicitNegation(Syllogism*);		//부당부정의 오류 
 bool ExistentialFallacy(Syllogism*);		//존재가정의 오류 
+void PrintAllCases(int);			//모든 경우를 출력합니다 (0:아리스토텔레스, 1:부울) 
 
 
 int main(void){
@@ -39,46 +41,17 @@ int main(void){
 	GetSyllogism(&input);
 	*/
 	
-	int i, j, k, l, m, cnt, cntValid=0;
-	char temp[] = "AEIO";
-	Syllogism input;
-	bool fallacyTable[6]; 
+	PrintAllCases(0);
+	printf("\n");
+	PrintAllCases(1);
+
 	
-	for(i=0; i<4; i++){
-		input.majorPremise = SetProposition(temp[i]);		
-		for(j=0; j<4; j++){
-			input.minorPremise = SetProposition(temp[j]);
-			for(k=0; k<4; k++){
-				input.conclusion = SetProposition(temp[k]);
-				for(l=1; l<=4; l++){
-					cnt = 0;
-					input.figure = l;
-					fallacyTable[0] = UndistributedMiddle(&input);
-					fallacyTable[1] = IllicitMajor(&input);
-					fallacyTable[2] = IllicitMinor(&input);
-					fallacyTable[3] = ExclusivePremises(&input);
-					fallacyTable[4] = IllicitAffirmation(&input);
-					fallacyTable[5] = ExistentialFallacy(&input);
-					printf("%c%c%c-%d   ", temp[i], temp[j], temp[k], l);
-					for(m=0; m<6; m++){
-						printf("%d ", fallacyTable[m]);
-						cnt += fallacyTable[m]?1:0;
-					}
-					if(cnt==0){
-						printf("  VALID");
-						cntValid++;
-						printf(" %d", cntValid);
-					}
-					printf("\n");
-				}
-			}
-		}
-	}
 	
 	return 0;
 }
 
 
+/*논증 식을 입력받아 저장합니다*/
 void GetSyllogism(Syllogism* syllogism){
 	syllogism->majorPremise = SetProposition(getchar());
 	syllogism->minorPremise = SetProposition(getchar());
@@ -88,6 +61,7 @@ void GetSyllogism(Syllogism* syllogism){
 	getchar();
 }
 
+/*알파벳을 정언명제로 대입합니다*/
 CategoricalProposition SetProposition(char chr){
 	if(chr=='A') return A;
 	else if(chr=='E') return E;
@@ -211,6 +185,20 @@ bool IllicitAffirmation(Syllogism* syllogism){
 	else return false;
 }
 
+/*부당부정의 오류*/
+bool IllicitNegation(Syllogism* syllogism){
+	if(!(syllogism->majorPremise.predicateDistribution)){
+		if(!(syllogism->minorPremise.predicateDistribution)){
+			if(syllogism->conclusion.predicateDistribution){
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	else return false;
+}
+
 /*존재가정의 오류*/
 bool ExistentialFallacy(Syllogism* syllogism){
 	if(syllogism->majorPremise.subjectDistribution){
@@ -224,3 +212,43 @@ bool ExistentialFallacy(Syllogism* syllogism){
 	}
 	else return false;
 }
+
+/*모든 경우를 출력합니다 (0:아리스토텔레스, 1:부울)*/
+void PrintAllCases(int num){
+	int i, j, k, l, m, cnt, cntValid=0;
+	char temp[] = "AEIO";
+	Syllogism syllogism;
+	bool fallacyTable[7]; 
+	
+	for(i=0; i<4; i++){
+		syllogism.majorPremise = SetProposition(temp[i]);		
+		for(j=0; j<4; j++){
+			syllogism.minorPremise = SetProposition(temp[j]);
+			for(k=0; k<4; k++){
+				syllogism.conclusion = SetProposition(temp[k]);
+				for(l=1; l<=4; l++){
+					cnt = 0;
+					syllogism.figure = l;
+					fallacyTable[0] = UndistributedMiddle(&syllogism);
+					fallacyTable[1] = IllicitMajor(&syllogism);
+					fallacyTable[2] = IllicitMinor(&syllogism);
+					fallacyTable[3] = ExclusivePremises(&syllogism);
+					fallacyTable[4] = IllicitAffirmation(&syllogism);
+					fallacyTable[5] = IllicitNegation(&syllogism);
+					fallacyTable[6] = ExistentialFallacy(&syllogism);
+					printf("%c%c%c-%d   ", temp[i], temp[j], temp[k], l);
+					for(m=0; m<6+num; m++){
+						printf("%d ", fallacyTable[m]);
+						cnt += fallacyTable[m]?1:0;
+					}
+					if(cnt==0){
+						printf("  VALID");
+						cntValid++;
+						printf(" %d", cntValid);
+					}
+					printf("\n");
+				}
+			}
+		}
+	}
+} 
