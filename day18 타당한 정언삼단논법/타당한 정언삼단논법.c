@@ -19,6 +19,9 @@ const CategoricalProposition E = {true, true};		//전칭부정명제
 const CategoricalProposition I = {false, false};	//특칭긍정명제 
 const CategoricalProposition O = {false, true};		//특칭부정명제 
 
+const char* fallacy[] = {"매개념 부주연의 오류.", "대개념 부당주연의 오류.",
+			"소개념 부당주연의 오류.", "양부정전제의 오류.",
+			"부당긍정의 오류.", "부당부정의 오류.", "존재가정의 오류."};
 
 void GetSyllogism(Syllogism*);			//논증 식을 입력받아 저장합니다 
 CategoricalProposition SetProposition(char);	//알파벳을 정언명제로 대입합니다 
@@ -29,24 +32,43 @@ bool ExclusivePremises(Syllogism*);		//양부정전제의 오류
 bool IllicitAffirmation(Syllogism*);		//부당긍정의 오류 
 bool IllicitNegation(Syllogism*);		//부당부정의 오류 
 bool ExistentialFallacy(Syllogism*);		//존재가정의 오류 
+void SetFallacy(bool*, Syllogism*);		//오류배열에 결과를 대입합니다 
+bool Validation(bool*, int);			//논증을 평가합니다 (타당:true)(0:아리스토텔레스, 1:부울)
+void PrintFallacy(bool*, int);			//오류를 출력합니다 (0:아리스토텔레스, 1:부울)
 void PrintAllCases(int);			//모든 경우를 출력합니다 (0:아리스토텔레스, 1:부울) 
 
 
 int main(void){
-	/*
+	
 	Syllogism input;
+	bool fallacyTable[7];
 	
 	printf("논증 식 : ");
 	
 	GetSyllogism(&input);
-	*/
 	
-	PrintAllCases(0);
-	printf("\n");
-	PrintAllCases(1);
-
+	SetFallacy(fallacyTable, &input);
 	
+	printf("아리스토텔레스 : ");
+	if(Validation(fallacyTable, 0)){
+		printf("타당하다.\n"); 
+	}
+	else{
+		printf("타당하지 않다. ");
+		PrintFallacy(fallacyTable, 0);
+		printf("\n"); 
+	}
 	
+	printf("부울 : "); 
+	if(Validation(fallacyTable, 1)){
+		printf("타당하다.\n"); 
+	}
+	else{
+		printf("타당하지 않다. ");
+		PrintFallacy(fallacyTable, 1);
+		printf("\n"); 
+	}
+		
 	return 0;
 }
 
@@ -213,6 +235,37 @@ bool ExistentialFallacy(Syllogism* syllogism){
 	else return false;
 }
 
+/*오류배열에 결과를 대입합니다*/
+void SetFallacy(bool* fallacyTable, Syllogism* syllogism){
+	fallacyTable[0] = UndistributedMiddle(syllogism);
+	fallacyTable[1] = IllicitMajor(syllogism);
+	fallacyTable[2] = IllicitMinor(syllogism);
+	fallacyTable[3] = ExclusivePremises(syllogism);
+	fallacyTable[4] = IllicitAffirmation(syllogism);
+	fallacyTable[5] = IllicitNegation(syllogism);
+	fallacyTable[6] = ExistentialFallacy(syllogism);
+}
+
+/*논증을 평가합니다 (0:아리스토텔레스, 1:부울)*/
+bool Validation(bool* fallacyTable, int num){
+	int i, cnt=0;
+	for(i=0; i<6+num; i++){
+		cnt += fallacyTable[i]?1:0;
+	}
+	if(cnt==0) return true;
+	else return false;
+} 
+
+/*오류를 출력합니다 (0:아리스토텔레스, 1:부울)*/
+void PrintFallacy(bool* fallacyTable, int num){
+	int i;
+	for(i=0; i<6+num; i++){
+		if(fallacyTable[i]){
+			printf("%s ", fallacy[i]);
+		}
+	}	
+}
+
 /*모든 경우를 출력합니다 (0:아리스토텔레스, 1:부울)*/
 void PrintAllCases(int num){
 	int i, j, k, l, m, cnt, cntValid=0;
@@ -229,13 +282,7 @@ void PrintAllCases(int num){
 				for(l=1; l<=4; l++){
 					cnt = 0;
 					syllogism.figure = l;
-					fallacyTable[0] = UndistributedMiddle(&syllogism);
-					fallacyTable[1] = IllicitMajor(&syllogism);
-					fallacyTable[2] = IllicitMinor(&syllogism);
-					fallacyTable[3] = ExclusivePremises(&syllogism);
-					fallacyTable[4] = IllicitAffirmation(&syllogism);
-					fallacyTable[5] = IllicitNegation(&syllogism);
-					fallacyTable[6] = ExistentialFallacy(&syllogism);
+					SetFallacy(fallacyTable, &syllogism);
 					printf("%c%c%c-%d   ", temp[i], temp[j], temp[k], l);
 					for(m=0; m<6+num; m++){
 						printf("%d ", fallacyTable[m]);
